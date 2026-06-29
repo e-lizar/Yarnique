@@ -1,0 +1,113 @@
+.payment-page {
+  min-height: 100vh;
+  background: #fffafc;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px;
+}
+
+.payment-card {
+  width: 100%;
+  max-width: 700px;
+
+  background: white;
+  padding: 40px;
+
+  border-radius: 30px;
+
+  box-shadow:
+    0 10px 30px
+    rgba(0, 0, 0, 0.1);
+}
+
+.payment-card h1 {
+  color:black;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.payment-card h2 {
+    color: black;
+  margin: 20px 0;
+}
+
+.payment-item {
+  display: flex;
+  gap: 20px;
+
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.payment-item img {
+  width: 120px;
+  height: 120px;
+
+  object-fit: contain;
+
+  background: #fafafa;
+  border-radius: 20px;
+}
+
+.payment-item h3{
+    color: black;
+}
+
+.payment-item p {
+    color: black;
+  margin: 5px 0;
+}
+
+.payment-card input {
+  width: 100%;
+
+  padding: 15px;
+  margin-top: 25px;
+
+  border: 2px solid #ffd1dc;
+  border-radius: 15px;
+
+  outline: none;
+
+  font-size: 16px;
+}
+
+.payment-card button {
+  width: 100%;
+
+  padding: 16px;
+  margin-top: 25px;
+
+  border: none;
+  border-radius: 50px;
+
+  background:
+    palevioletred;
+
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.payment-card button:hover {
+  opacity: 0.9;
+}
+
+.delivery-note {
+  text-align: center;
+  margin-top: 25px;
+  color: gray;
+}
+
+@media (max-width: 768px) {
+  .payment-item {
+    flex-direction: column;
+    text-align: center;
+  }
+}

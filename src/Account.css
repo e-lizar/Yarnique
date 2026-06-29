@@ -1,0 +1,109 @@
+.account-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    #fff0f7,
+    #ffe3f0
+  );
+  padding: 30px;
+
+}
+.account-page h1 {
+  color: black;
+  margin-bottom: 10px;
+  font-size: 35px
+}
+
+
+.account-card {
+  width: 100%;
+  max-width: 450px;
+  background: white;
+  padding: 45px 35px;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow:
+    0 10px 30px
+    rgba(0, 0, 0, 0.1);
+  animation: fadeUp 0.7s ease;
+}
+
+.account-card h2 {
+  color: #c95b94;
+  margin-bottom: 10px;
+  font-size: 28px;
+}
+
+.account-card p {
+  color: #777;
+  margin-bottom: 35px;
+  font-size: 16px;
+}
+
+.account-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.account-buttons button {
+  padding: 15px;
+  border: none;
+  border-radius: 15px;
+  background: #d97bb3;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.account-buttons button:hover {
+  background: #c95b94;
+  transform: translateY(-3px);
+  box-shadow:
+    0 8px 20px
+    rgba(217, 123, 179, 0.35);
+}
+
+/* Logout Button */
+.logout-btn {
+  background: #ff6b81 !important;
+}
+
+.logout-btn:hover {
+  background: #ff4f6d !important;
+}
+
+/* Animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform:
+      translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0);
+  }
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+  .account-page {
+    padding: 20px;
+  }
+
+  .account-card {
+    padding: 35px 25px;
+  }
+
+  .account-card h2 {
+    font-size: 24px;
+  }
+}

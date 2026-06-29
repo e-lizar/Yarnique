@@ -1,0 +1,153 @@
+.register-page {
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #fff0f7,
+    #ffe3f0
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.register-page h1 {
+  color: #c95b94;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.register-page form {
+  width: 100%;
+  max-width: 450px;
+  background: white;
+  padding: 40px;
+  border-radius: 30px;
+  box-shadow:
+    0 10px 30px
+    rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: fadeUp 0.7s ease;
+}
+
+.register-page input {
+  padding: 15px;
+  border: 1px solid #f2cddd;
+  border-radius: 15px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.register-page input:focus {
+  outline: none;
+  border-color: #d97bb3;
+  box-shadow:
+    0 0 10px
+    rgba(
+      217,
+      123,
+      179,
+      0.3
+    );
+}
+
+.register-page button {
+  padding: 15px;
+  border: none;
+  border-radius: 15px;
+  background: #d97bb3;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.register-page button:hover {
+  background: #c95b94;
+  transform: translateY(-3px);
+}
+
+.password-container {
+  position: relative;
+}
+
+.password-container input {
+  width: 100%;
+}
+
+.password-container button {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  color: #888;
+  padding: 0;
+}
+
+.login-link {
+  margin-top: 20px;
+  color: #666;
+  font-size: 15px;
+  text-align: center;
+}
+
+.login-link a {
+  color: palevioletred;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.login-link a:hover {
+  color: #d97bb3;
+  text-decoration: underline;
+}
+
+.about-footer {
+  padding: 60px 8%;
+  text-align: center;
+}
+
+.back-home {
+  text-decoration: none;
+  color: palevioletred;
+  font-weight: bold;
+  font-size: 2rem;
+
+  transition: 0.3s;
+}
+
+.back-home:hover {
+  color: hotpink;
+}
+
+.about-footer p {
+  margin-top: 20px;
+  color: #777;
+  font-size: 0.95rem;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform:
+      translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0);
+  }
+}
+
+@media (max-width: 500px) {
+  .register-page form {
+    padding: 25px;
+  }
+}
