@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./App.css";
+
 import helloKitty from "./assets/two-piece-hello-kitty-set.jpeg";
 import ribbonSkirt from "./assets/ribbon-skirt.jpeg";
 import backlessDress from "./assets/backless-dress.jpeg";
@@ -25,26 +26,26 @@ function Home() {
     id: 1,
     name: "Crochet Hello Kitty bikini ",
     price: "$45",
-    image: "helloKitty"
+    image: helloKitty
   },
   {
     id: 2,
     name: "Crochet Skirt Ribbon",
     price: "$28",
-    image: "ribbonSkirt"
+    image: ribbonSkirt
   },
   {
     id: 3,
     name: "Croche Mini dress",
     price: "$20",
-    image: "backlessDress"
+    image: backlessDress
   },
     
   {
     id: 4,
     name: "Croche Bag",
     price: "$75",
-    image: "shoulderBag"
+    image: shoulderBag
   }
 ];
   return (
