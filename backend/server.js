@@ -72,6 +72,9 @@ app.post("/admin-login", async (req, res) => {
       email
     });
 
+  console.log("Admin object:", admin);
+  console.log("Stored password:", admin?.password);
+
     if (!admin) {
       return res.status(401).json({
         success: false,
