@@ -54,7 +54,7 @@ function PayPalCheckout({
 
         onApprove={ async (data) => {
             try {
-                const response = await fetch("http://localhost:5000/payment/capture-order",
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/payment/capture-order`,
                     { method: "POST", headers:{ "Content-Type": "application/json"},
                 body:JSON.stringify({orderID: data.orderID})
             }

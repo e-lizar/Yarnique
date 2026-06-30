@@ -180,7 +180,7 @@ function AdminProducts() {
 
       try {
         await fetch(
-          `http://localhost:5000/products/${id}`,
+          `${import.meta.env.VITE_API_URL}/products/${id}`,
           {
             method: "DELETE"
           }

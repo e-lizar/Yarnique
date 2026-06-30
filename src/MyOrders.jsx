@@ -18,7 +18,7 @@ function MyOrders() {
 
     // Fetch purchased orders
     fetch(
-      `http://localhost:5000/orders/customer/${customer.id}`
+      `${import.meta.env.VITE_API_URL}/orders/customer/${customer.id}`
     )
       .then((response) =>
         response.json()
