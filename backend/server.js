@@ -79,13 +79,15 @@ app.post("/admin-login", async (req, res) => {
       });
     }
 
-    if (password !== admin.password) {
-      return res.status(401).json({
-        success: false,
-        message: "Invalid password"
-      });
-    }
+    const isMatch = await bcrypt.compare(password, admin.password);
 
+    if (!isMatch) {
+     return res.status(401).json({
+    success: false,
+    message: "Invalid password"
+   });
+  }
+     
     res.json({
       success: true,
       message: "Login successful"
