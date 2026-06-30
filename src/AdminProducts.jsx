@@ -516,7 +516,7 @@ function AdminProducts() {
              {product.images &&
                  product.images.length > 0 && (
                  <img
-                  src={`http://localhost:5000/uploads/${product.images[0]}`}
+                  src={`${import.meta.env.VITE_API_URL}/uploads/${product.images[0]}`}
                    alt={product.name}
                    className="admin-product-image"
                    />
