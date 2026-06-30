@@ -39,13 +39,13 @@ function EditProfile() {
       e.preventDefault();
 
       console.log(
-       `http://localhost:5000/customers/${customer.id}`
+       `${import.meta.env.VITE_API_URL}/customers/${customer.id}`
       );
 
       try {
         const response =
           await fetch(
-            `http://localhost:5000/customers/${customer.id}`,
+            `${import.meta.env.VITE_API_URL}/customers/${customer.id}`,
             {
               method: "PATCH",
               headers: {

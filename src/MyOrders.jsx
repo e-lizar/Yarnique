@@ -32,7 +32,7 @@ function MyOrders() {
 
     // Fetch custom requests
     fetch(
-      `http://localhost:5000/custom-orders/customer/${customer.email}`
+      `${import.meta.env.VITE_API_URL}/custom-orders/customer/${customer.email}`
     )
       .then((response) =>
         response.json()
@@ -78,7 +78,7 @@ function MyOrders() {
                   <div key={index}>
                     {item.image && (
                       <img
-                        src={`http://localhost:5000/uploads/${item.image}`}
+                        src={`${import.meta.env.VITE_API_URL}/uploads/${item.image}`}
                         alt={item.name}
                         className="order-image"
                       />
@@ -164,7 +164,7 @@ function MyOrders() {
               >
                 {order.image && (
                   <img
-                    src={`http://localhost:5000/uploads/${order.image}`}
+                    src={`${import.meta.env.VITE_API_URL}/uploads/${order.image}`}
                     alt="Custom Order"
                     className="order-image"
                   />

@@ -39,7 +39,7 @@ function Payment() {
     try {
       const stkResponse =
         await fetch(
-          "http://localhost:5000/mpesa/stkpush",
+          `${import.meta.env.VITE_API_URL}/mpesa/stkpush`,
           {
             method:
               "POST",
@@ -98,7 +98,7 @@ function Payment() {
               className="payment-item"
             >
               <img
-                src={`http://localhost:5000/uploads/${item.image}`}
+                src={`${import.meta.env.VITE_API_URL}/uploads/${item.image}`}
                 alt={item.name}
               />
 

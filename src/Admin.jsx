@@ -26,7 +26,7 @@ const [depositAmount,
   useState({});
 
   useEffect(() => {
-    fetch("http://localhost:5000/custom-orders")
+    fetch(`${import.meta.env.VITE_API_URL}/custom-orders`)
       .then((response) => response.json())
       .then((data) => {
         setOrders(data);
@@ -59,7 +59,7 @@ const completedOrders =
  ) => {
   try {
     await fetch(
-      `http://localhost:5000/custom-orders/${id}`,
+      `${import.meta.env.VITE_API_URL}/custom-orders/${id}`,
       {
         method: "PATCH",
         headers: {
@@ -92,7 +92,7 @@ const completedOrders =
   async (id) => {
     try {
       await fetch(
-        `http://localhost:5000/custom-orders/${id}/quote`,
+        `${import.meta.env.VITE_API_URL}/custom-orders/${id}/quote`,
         {
           method: "PATCH",
           headers: {
@@ -115,7 +115,7 @@ const completedOrders =
 
       const response =
         await fetch(
-          "http://localhost:5000/custom-orders"
+          `${import.meta.env.VITE_API_URL}/custom-orders`
         );
 
       const data =
@@ -173,7 +173,7 @@ const completedOrders =
 
             {order.image && (
              <img
-                src={`http://localhost:5000/uploads/${order.image}`}
+                src={`${import.meta.env.VITE_API_URL}/uploads/${order.image}`}
                 alt="Inspiration"
                 className="order-image"
               />

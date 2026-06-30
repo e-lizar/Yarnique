@@ -39,7 +39,7 @@ function AdminProducts() {
     try {
       const response =
         await fetch(
-          "http://localhost:5000/products"
+          `${import.meta.env.VITE_API_URL}/products`
         );
 
       const data =
@@ -97,14 +97,14 @@ function AdminProducts() {
        let response;
        if (editingId){
         response =
-        await fetch( `http://localhost:5000/products/${editingId}`,
+        await fetch( `${import.meta.env.VITE_API_URL}/products/${editingId}`,
           {
             method:"PATCH",
             body: data
           }
         ) ;
        } else{
-        response = await fetch("http://localhost:5000/products",
+        response = await fetch(`${import.meta.env.VITE_API_URL}/products`,
           {method: "POST",
             body: data
           }

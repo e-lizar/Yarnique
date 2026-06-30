@@ -29,7 +29,7 @@ function PayPalCheckout({
 
           const response =
             await fetch(
-              "http://localhost:5000/payment/create-order",
+              `${import.meta.env.VITE_API_URL}/payment/create-order`,
               {
                 method: "POST",
 
@@ -60,7 +60,7 @@ function PayPalCheckout({
             }
                 );
                 await response.json();
-                const saveResponse = await fetch("http://localhost:5000/orders",
+                const saveResponse = await fetch(`${import.meta.env.VITE_API_URL}/orders`,
                   {method:"POST", headers:{"Content-Type":"application/json"},
                 body: JSON.stringify({
                   customerId: customer.id,

@@ -12,7 +12,7 @@ function CustomOrder() {
        <h3>Selected Product</h3>
 
        <img
-          src={`http://localhost:5000/uploads/${orderData.image}`}
+          src={`${import.meta.env.VITE_API_URL}/uploads/${orderData.image}`}
           alt={orderData.productName}
           className="selected-product-image"
         />
@@ -78,7 +78,7 @@ if (formData.image) {
 }
 
 await fetch(
-  "http://localhost:5000/custom-order",
+  `${import.meta.env.VITE_API_URL}/custom-order`,
   {
     method: "POST",
     body: data

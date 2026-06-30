@@ -14,7 +14,7 @@ function AdminLogin() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/admin-login",
+        `${import.meta.env.VITE_API_URL}/admin-login`,
         {
           method: "POST",
           headers: {

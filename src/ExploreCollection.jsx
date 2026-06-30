@@ -14,6 +14,8 @@ function ExploreCollection() {
   const [products, setProducts] =
     useState([]);
   const [cart, setCart] = useState(
+
+
      JSON.parse(
     localStorage.getItem("cart")
      ) || []
@@ -25,7 +27,7 @@ function ExploreCollection() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch(`${import.meta.env.VITE_API_URL}/products`)
       .then((response) =>
         response.json()
       )
@@ -277,7 +279,7 @@ function ExploreCollection() {
                   )}
 
                   <img
-                    src={`http://localhost:5000/uploads/${
+                    src={`${import.meta.env.VITE_API_URL}/uploads/${
                       product.images[
                         selectedImages[
                           product._id
