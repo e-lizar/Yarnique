@@ -314,85 +314,92 @@ app.patch(
   }
 );
 
-app.post("/custom-order", upload.single("image"), async (req, res) => {
-  try {
-
-    const order = new CustomOrder({
-      fullName: req.body.fullName,
-      email: req.body.email,
-      itemType: req.body.itemType,
-
-      size: req.body.size,
-      bust: req.body.bust,
-      waist: req.body.waist,
-      hips: req.body.hips,
-
-      topLength: req.body.topLength,
-      topLengthInches: req.body.topLengthInches,
-
-      bottomLength: req.body.bottomLength,
-      bottomLengthInches: req.body.bottomLengthInches,
-
-      colors: req.body.colors,
-      description: req.body.description,
-
-      image: req.file ? req.file.filename : null
-    });
-
-    // Save first
-    await order.save();
-
-    // Try sending email
+app.post(
+  "/custom-order",
+  upload.single("image"),
+  async (req, res) => {
     try {
+      console.log(req.body);
 
-      await transporter.sendMail({
-        from: process.env.EMAIL_USER,
-        to: order.email,
-        subject: "Yarnique Order Received 🧶💖",
+      const order = new CustomOrder({
+        fullName: req.body.fullName,
+        email: req.body.email,
+        itemType: req.body.itemType,
 
-        text: `
-Hi ${order.fullName},
+        size: req.body.size,
+        bust: req.body.bust,
+        waist: req.body.waist,
+        hips: req.body.hips,
 
-Thank you for choosing Yarnique!
+        topLength: req.body.topLength,
+        topLengthInches: req.body.topLengthInches,
 
-We've received your custom order.
+        bottomLength: req.body.bottomLength,
+        bottomLengthInches: req.body.bottomLengthInches,
 
-Item:
-${order.itemType}
+        colors: req.body.colors,
+        description: req.body.description,
 
-We'll contact you soon.
-
-Love,
-Yarnique 🧶💖
-`
+        image: req.file ? req.file.filename : null,
       });
 
-      console.log("Email sent.");
+      // Save order first
+      await order.save();
 
-    } catch(emailError){
+      console.log("✅ Order saved to MongoDB");
 
-      console.log("Email failed:");
-      console.log(emailError.message);
+      // Return success immediately
+      res.status(200).json({
+        success: true,
+        message: "Custom order submitted successfully."
+      });
 
+      // Send email in the background
+      transporter
+        .sendMail({
+          from: process.env.EMAIL_USER,
+          to: order.email,
+          subject: "Yarnique - Custom Order Received 🧶💖",
+          html: `
+            <h2>Hello ${order.fullName},</h2>
+
+            <p>Thank you for choosing <strong>Yarnique</strong>. 💖</p>
+
+            <p>Your custom crochet order has been received successfully.</p>
+
+            <h3>Order Details</h3>
+
+            <ul>
+              <li><strong>Item:</strong> ${order.itemType}</li>
+              <li><strong>Preferred Colors:</strong> ${order.colors}</li>
+            </ul>
+
+            <p>We'll review your request and contact you soon.</p>
+
+            <br/>
+
+            <p>With love,</p>
+            <h3>Yarnique 🧶💖</h3>
+          `,
+        })
+        .then(() => {
+          console.log("✅ Confirmation email sent.");
+        })
+        .catch((err) => {
+          console.log("❌ Email failed:");
+          console.log(err.message);
+        });
+
+    } catch (err) {
+      console.error("❌ Custom order error:", err);
+
+      res.status(500).json({
+        success: false,
+        message: "Failed to submit custom order."
+      });
     }
-
-    // Always return success
-    res.json({
-      success:true,
-      message:"Order submitted successfully."
-    });
-
-  } catch(error){
-
-    console.log(error);
-
-    res.status(500).json({
-      success:false,
-      message:"Failed to save order."
-    });
-
   }
-});
+);
 
 app.get("/custom-orders", async (req, res) => {
   try {
