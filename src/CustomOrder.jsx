@@ -50,57 +50,67 @@ function CustomOrder() {
 
   const handleSubmit = async (e) => {
   e.preventDefault();
-  
-  console.log("Submit button clicked");
 
   const data = new FormData();
 
-data.append("fullName", formData.fullName);
-data.append("email", formData.email);
-data.append("itemType", formData.itemType);
-
-data.append("size", formData.size);
-data.append("bust", formData.bust);
-data.append("waist", formData.waist);
-data.append("hips", formData.hips);
-
-data.append("topLength", formData.topLength);
-data.append("topLengthInches", formData.topLengthInches);
-
-data.append("bottomLength", formData.bottomLength);
-data.append("bottomLengthInches", formData.bottomLengthInches);
-
-data.append("colors", formData.colors);
-data.append("description", formData.description);
-
-if (formData.image) {
-  data.append("image", formData.image);
-}
-
-await fetch(
-  `${import.meta.env.VITE_API_URL}/custom-order`,
-  {
-    method: "POST",
-    body: data
-  }
-);
-
-  setShowMessage(true);
-  // Clear the form
-  setFormData({
-    fullName: "",
-    email: "",
-    itemType: "",
-    colors: "",
-    description: "",
-    image: null
+  Object.keys(formData).forEach(key => {
+    if (formData[key]) {
+      data.append(key, formData[key]);
+    }
   });
 
-  setTimeout(() => {
-    setShowMessage(false);
-  }, 8000);
-  };
-  
+  try {
+
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/custom-order`,
+      {
+        method:"POST",
+        body:data
+      }
+    );
+
+    const result = await response.json();
+
+    if(result.success){
+
+      setShowMessage(true);
+
+      setFormData({
+        fullName:"",
+        email:"",
+        itemType:"",
+        size:"",
+        bust:"",
+        waist:"",
+        hips:"",
+        topLength:"",
+        topLengthInches:"",
+        bottomLength:"",
+        bottomLengthInches:"",
+        colors:"",
+        description:"",
+        image:null
+      });
+
+      setTimeout(()=>{
+        setShowMessage(false);
+      },8000);
+
+    }else{
+
+      alert(result.message);
+
+    }
+
+  }catch(err){
+
+    console.log(err);
+
+    alert("Server error.");
+
+  }
+
+};
   return (
     <div className="custom-page">
 
